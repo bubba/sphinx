@@ -432,9 +432,9 @@ class ASTUnaryOpExpr(ASTExpression):
 
     def _stringify(self, transform: StringifyTransform) -> str:
         if self.op[0] in 'cn':
-            return self.op + " " + transform(self.expr)
+            return transform(self.op) + " " + transform(self.expr)
         else:
-            return self.op + transform(self.expr)
+            return transform(self.op) + transform(self.expr)
 
     def describe_signature(self, signode: TextElement, mode: str,
                            env: "BuildEnvironment", symbol: "Symbol") -> None:
